@@ -115,7 +115,7 @@ GLuint CompileShaders()
 // VBO Functions - click on + to expand
 #pragma region VBO_FUNCTIONS
 GLuint generateObjectBuffer(GLfloat vertices[], GLfloat colors[]) {
-	GLuint numVertices = 3;
+	GLuint numVertices = 4;
 	// Genderate 1 generic buffer object, called VBO
 	GLuint VBO;
  	glGenBuffers(1, &VBO);
@@ -150,7 +150,7 @@ void display(){
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	// NB: Make the call to draw the geometry in the currently activated vertex buffer. This is where the GPU starts to work!
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_QUADS, 0, 4);
     glutSwapBuffers();
 }
 
@@ -160,10 +160,12 @@ void init()
 	// Create 3 vertices that make up a triangle that fits on the viewport 
 	GLfloat vertices[] = {-1.0f, -1.0f, 0.0f,
 			1.0f, -1.0f, 0.0f,
-			0.0f, 1.0f, 0.0f};
+			1.0f, 1.0f, 0.0f,
+			-1.0f, 1.0f, 0.0f};
 	// Create a color array that identfies the colors of each vertex (format R, G, B, A)
 	GLfloat colors[] = {0.0f, 1.0f, 0.0f, 1.0f,
 			1.0f, 0.0f, 0.0f, 1.0f,
+			0.0f, 1.0f, 0.0f, 1.0f,
 			0.0f, 0.0f, 1.0f, 1.0f};
 	// Set up the shaders
 	GLuint shaderProgramID = CompileShaders();
@@ -179,7 +181,7 @@ int main(int argc, char** argv){
 	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Hello Triangle");
+    glutCreateWindow("Hello Square");
 	// Tell glut where the display function is
 	glutDisplayFunc(display);
 
