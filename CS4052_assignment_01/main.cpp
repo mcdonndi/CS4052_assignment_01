@@ -22,7 +22,7 @@ out vec4 color;																 \n\
                                                                                \n\
 void main()                                                                     \n\
 {                                                                                \n\
-    gl_Position = vec4(vPosition.x, vPosition.y, vPosition.z, 1.0);  \n\
+    gl_Position = vec4(vPosition.x/2, vPosition.y/2, vPosition.z/2, 1.0);  \n\
 	color = vColor;							\n\
 }";
 
@@ -31,11 +31,12 @@ void main()                                                                     
 static const char* pFS = "                                              \n\
 #version 330                                                            \n\
                                                                         \n\
+in vec4 color;															\n\
 out vec4 FragColor;                                                      \n\
                                                                           \n\
 void main()                                                               \n\
 {                                                                          \n\
-FragColor = vec4(1.0, 0.0, 0.0, 1.0);									 \n\
+FragColor = color;									 \n\
 }";
 
 
